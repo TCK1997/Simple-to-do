@@ -25,12 +25,18 @@ ul{
 <body>
 <div>
 <h3 class = "intro">To-do-list</h3>
-<input type = "text" id = "current" value="test">
+<input type = "text" id = "current" value="type me" onfocus="this.value=''" onkeypress="handle(event)">
 <button onclick ="add_to_list()">add</button>
 <ul id="list">
 </ul>
 </div>
 <script>
+function handle(event){
+	var e_press = event.which || event.keyCode;
+	if(e_press === 13){
+	    add_to_list();
+	}
+}
 function add_to_list(){
 	var text_val = document.getElementById("current").value;
 	text_val += "  ";
@@ -43,6 +49,7 @@ function add_to_list(){
 	list_item.appendChild(to_do);
 	list_item.appendChild(close);
 	document.getElementById("list").appendChild(list_item);
+	document.getElementById("current").value = '';
 }
 </script>
 </body>
