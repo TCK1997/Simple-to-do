@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+body {
+    background-color: linen;
+}
+
+h3 {
+    color: maroon;
+    margin-left: 40px;
+} 
+div {
+	margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+ul{
+	list-style-type: square;
+}
+</style>
+
+
+<body>
+<div>
+<h3 class = "intro">To-do-list</h3>
+<input type = "text" id = "current" value="test">
+<button onclick ="add_to_list()">add</button>
+<ul id="list">
+</ul>
+</div>
+<script>
+function add_to_list(){
+	var text_val = document.getElementById("current").value;
+	text_val += "  ";
+	var to_do = document.createTextNode(text_val);
+	var list_item = document.createElement("li");
+	var close = document.createElement("button");
+	close.setAttribute("onClick", "this.parentNode.parentNode.removeChild(this.parentNode)");
+	var x = document.createTextNode("x");
+	close.appendChild(x);
+	list_item.appendChild(to_do);
+	list_item.appendChild(close);
+	document.getElementById("list").appendChild(list_item);
+}
+</script>
+</body>
+</html>
